@@ -1,0 +1,7 @@
+galaxy_info:
+  author: Julio Faerman
+  license: Apache-2.0
+  description: Prepares a cluster
+  min_ansible_version: 2.2
+  galaxy_tags: []
+dependencies: []

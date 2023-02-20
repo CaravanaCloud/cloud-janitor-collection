@@ -2,13 +2,9 @@
 galaxy_info:
   role_name: hello
   author: faermanj
-  description: Ansible Role to Setup/Prepare Ignition for Bootstrap
+  description: just says hello
   license: Apache-2.0
   min_ansible_version: "4.1"
-  platforms:
-    - name: EL
-      versions:
-        - all
   galaxy_tags:
     - openshift
 

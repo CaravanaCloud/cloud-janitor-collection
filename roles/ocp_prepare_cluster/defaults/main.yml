@@ -1,0 +1,10 @@
+---
+# defaults file for ocp_prepare_cluster
+cluster_template: "default"
+cluster_dir_path: "/tmp"
+cluster_baseDomain: "devcluster.openshift.com"
+cluster_worker_replicas: "3"
+cluster_master_replicas: "3"
+cluster_region: "us-west-2"
+cluster_pullSecret: ""
+cluster_sshKey: ""

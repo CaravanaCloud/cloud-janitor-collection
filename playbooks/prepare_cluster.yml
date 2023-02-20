@@ -1,0 +1,11 @@
+- hosts: localhost
+  tasks:
+    - name: Populate ansible_env with system facts
+      setup:
+
+    - name: Generate OpenShift cluster configuration
+      include_role:
+        name: caravanacloud.cloud_janitor.ocp_prepare_cluster
+      vars:
+        cluster_sshKey: "{{ lookup('env', 'CJ_OCP_SSHKEY') }}"
+        cluster_pullSecret: "{{ lookup('env', 'CJ_OCP_SSHKEY') }}"

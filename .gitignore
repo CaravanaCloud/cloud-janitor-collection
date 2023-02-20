@@ -133,3 +133,12 @@ dmypy.json
 
 # Built modules
 *.tar.gz
+
+# Temp dir
+temp/
+
+# System dirs
+.ansible
+.tmp
+.temp
+

@@ -2,10 +2,13 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: Pre-build workspace
-    command: echo "Workspace test command at $(date)"
-    init: ansible-galaxy collection build
-    
+  - name: Setup workspace
+    init: ./build.sh
+    command: |
+      ln -s /home/gitpod/.ansible/ /workspace/cloud-janitor-collection/.ansible
+      ln -s /tmp /workspace/cloud-janitor-collection/.tmp
+      echo "Workspace command setup at $(date)"
+
 ports:
   - port: 40000-50000
     onOpen: ignore

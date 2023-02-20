@@ -1,0 +1,40 @@
+---
+# tasks file for ocp_prepare_cluster
+- name: Print start message
+  debug:
+    msg: "Preparing openshift cluster"
+
+# - debug:
+#    var: ansible_env
+
+- name: Generate cluster name
+  set_fact:
+    cluster_name: "{{ lookup('env', 'USER') }}-{{ ansible_date_time.date | regex_replace('[-]','') }}"
+
+- name: Generate cluster path
+  set_fact:    
+    cluster_path:  "{{ cluster_dir_path }}/{{ cluster_name }}"
+
+- name: Create a directory with the generated name
+  file:
+    path: "{{ cluster_path }}"
+    state: directory
+
+- name: Print path
+  debug:
+    msg: "{{ cluster_path }}"
+
+- name: Generate the YAML file from template
+  template:
+    src: "{{ cluster_template }}/install-config.yaml"
+    dest: "{{ cluster_path }}/install-config.yaml"
+    backup: yes
+
+- name: Backup the install-config
+  copy:
+    src: "{{ cluster_path }}/install-config.yaml"
+    dest: "{{ cluster_path }}/install-config.backup.yaml"
+
+- name: Print stdoneart message
+  debug:
+    msg: "Openshift cluster prepared at {{ cluster_path }}"
