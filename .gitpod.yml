@@ -2,9 +2,9 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: Run tests
+  - name: Pre-build workspace
     command: echo "Workspace test command at $(date)"
-    init: ./test.sh
+    init: ansible-galaxy collection build
     
 ports:
   - port: 40000-50000

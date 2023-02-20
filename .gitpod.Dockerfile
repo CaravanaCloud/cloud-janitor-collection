@@ -1,7 +1,9 @@
 FROM gitpod/workspace-full
 
 # OS Packages
-RUN bash -c "sudo install-packages ansible gettext htop"
+RUN bash -c "sudo install-packages gettext htop"
+# Ansible
+RUN bash -c "python3 -m pip install ansible"
 # AWS CLI
 RUN bash -c "curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip' && unzip awscliv2.zip && sudo ./aws/install"
 # AWS SAM

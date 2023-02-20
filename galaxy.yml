@@ -1,7 +1,7 @@
 # See https://docs.ansible.com/ansible/latest/dev_guide/collections_galaxy_meta.html
 
-namespace: caraavanacloud
-name: cloud-janitor
+namespace: caravanacloud
+name: cloud_janitor
 version: 0.1.0
 readme: README.md
 authors:
