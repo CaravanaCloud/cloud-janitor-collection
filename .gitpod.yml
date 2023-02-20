@@ -1,0 +1,15 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Run tests
+    command: echo "Workspace test command at $(date)"
+    init: ./test.sh
+    
+ports:
+  - port: 40000-50000
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - redhat.ansible
