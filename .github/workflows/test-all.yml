@@ -3,11 +3,11 @@ name: Test all versions
 on:
   workflow_dispatch:
     inputs:
-      ocp-versions:
+      ocp_versions:
         description: 'A list of versions to iterate over'
         required: false
         default: '["4.12", "4.11", "4.10"]'
-      opct-versions:
+      opct_versions:
         description: 'A map of versions to iterate over'
         required: false
         default: '{"4.12": ["0.3", "0.2"], "4.11": ["0.2"], "4.10": ["0.0"]}'
@@ -18,9 +18,9 @@ jobs:
     steps:
       - name: Iterate over Compatibility Matrix
         run: |
-          for ocp-version in ${{ fromJson(inputs.ocp-versions) }}; do
-            for opct-version in ${{ fromJson(inputs.opct-versions)[ocp-version] }}; do
-              echo "Building ocp-version $ocp-version, opct-version $opct-version"
+          for ocp_version in ${{ fromJson(inputs.ocp_versions) }}; do
+            for opct_version in ${{ fromJson(inputs.opct_versions)[ocp_version] }}; do
+              echo "Building ocp_version $ocp_version, opct_version $opct_version"
               # call another GitHub action with version and build as inputs
             done
           done
