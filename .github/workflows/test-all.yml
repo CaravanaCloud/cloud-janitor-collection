@@ -12,6 +12,10 @@ jobs:
         opct-version: ['0.3', '0.2', '0.0']
     steps:
       - name: Iterate over Compatibility Matrix
+        if: |
+          (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.3')
+          || (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.2')
+          || (matrix.ocp-version == '4.11') && (matrix.opct-version == '0.2')
         run: |
           echo "ocp-version: ${{ matrix.ocp-version }}, opct-version: ${{ matrix.opct-version }}"
 
