@@ -16,6 +16,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Run heavy build
         run: |
-          echo "Run ocp-version ${{ inputs.ocp-version }}, opct-version ${{ inputs.opct-version }}"
+          echo "Run ocp-version ${{ inputs.ocpversion }}, opct-version ${{ inputs.opct-version }}"
           sleep 3
 
