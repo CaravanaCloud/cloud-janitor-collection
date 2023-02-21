@@ -19,6 +19,7 @@ jobs:
       - name: Iterate over Compatibility Matrix
         run: |
           for ocp_version in ${{ fromJson(inputs.ocp_versions) }}; do
+            echo "Building ocp_version $opct_version"
             for opct_version in ${{ fromJson(inputs.opct_versions)[ocp_version] }}; do
               echo "Building ocp_version $ocp_version, opct_version $opct_version"
               # call another GitHub action with version and build as inputs
