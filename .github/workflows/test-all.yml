@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         ocp-version: ['4.12', '4.11', '4.10']
-        opct-version: ['0.3', '0.2', '0.0']
+        opct-version: ['0.3', '0.2', '0.1']
     steps:
       - name: Iterate over Compatibility Matrix
         if: |
