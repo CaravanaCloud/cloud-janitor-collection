@@ -8,20 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ocp-version: ['4.12', '4.11', '4.10']
-        opct-version: ['0.3', '0.2', '0.1']
+        a-version: ['1.0', '2.0', '3.0']
+        b-version: ['A.B', 'C.D', 'E.F']
     steps:
       - name: Iterate over Compatibility Matrix
         if: |
-          (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.3')
-          || (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.2')
-          || (matrix.ocp-version == '4.11') && (matrix.opct-version == '0.2')
+          (matrix.a-version == '1.0') && (matrix.b-version == 'A.B')
+          || (matrix.a-version == '1.0') && (matrix.b-version == 'C.D')
+          || (matrix.a-version == '2.0') 
+          # ...
         run: |
-          echo "Testing version ${ocp-version}-${opct-version}..."
+          echo "Testing with a: ${a-version} b: ${b-version}..."
           curl -X POST \
               -H 'Accept: application/vnd.github.v3+json' \
               -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
               https://api.github.com/repos/CaravanaCloud/cloud-janitor-collection/actions/workflows/test-version.yml/dispatches \
-              -d '{"ref":"main", "inputs": {"ocp-version": "${ocp-version}", "opct-version": "opct-version"}}'
-          echo "Sent dispatch to version ${ocp-version}-${opct-version}..."
+              -d '{"ref":"main", "inputs": {"a-version": "${a-version}", "b-version": "b-version"}}'
+          echo "Sent dispatch to version ${a-version}-${b-version}..."
 

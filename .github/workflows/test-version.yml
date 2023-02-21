@@ -1,12 +1,12 @@
-name: Test single version
+name: Test single version set
 
 on:
   workflow_dispatch:
     inputs:
-      ocp-version:
-        description: ocp version
-      opct-version:
-        description: opct version
+      a-version:
+        description: a version
+      b-version:
+        description: b version
 
 jobs:
   test_version:
@@ -14,5 +14,5 @@ jobs:
     steps:
     - name: Test version
       run: |
-        echo "Testing version ${ocp-version}-${opct-version}..."
+        echo "Testing version ${a-version} - ${b-version}..."
         # Add your commands to test the version here
