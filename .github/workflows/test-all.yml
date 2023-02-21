@@ -10,7 +10,7 @@ jobs:
         ocp-version: ['4.12', '4.11', '4.10']
         opct-version: ['0.3', '0.2', '0.0']
     
-    uses: CaravanaCloud/cloud-janitor-collection/.github/actions/test-version.yml@main
+    uses: CaravanaCloud/cloud-janitor-collection/.github/workflows/test-version.yml@main
     if: |
           (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.3')
           || (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.2')
