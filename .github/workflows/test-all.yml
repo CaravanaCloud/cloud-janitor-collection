@@ -18,7 +18,7 @@ jobs:
           (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.3')
           || (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.2')
           || (matrix.ocp-version == '4.11') && (matrix.opct-version == '0.2')
-        uses: ./.github/actions/test-version.yml
+        uses: ./.github/workflows/test-version.yml
         with:
           ocp-version: ${{ matrix.ocp-version }}
           opct-version: ${{ matrix.opct-version }}
