@@ -18,5 +18,10 @@ jobs:
           || (matrix.ocp-version == '4.11') && (matrix.opct-version == '0.2')
         run: |
           echo "Testing version ${ocp-version}-${opct-version}..."
-
+          curl -X POST \
+              -H 'Accept: application/vnd.github.v3+json' \
+              -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+              https://api.github.com/repos/CaravanaCloud/cloud-janitor-collection/actions/workflows/test-version.yml/dispatches \
+              -d '{"ref":"main", "inputs": {"ocp-version": "${ocp-version}", "opct-version": "opct-version"}}'
+          echo "Sent dispatch to version ${ocp-version}-${opct-version}..."
 
