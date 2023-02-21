@@ -11,6 +11,8 @@ jobs:
         ocp-version: ['4.12', '4.11', '4.10']
         opct-version: ['0.3', '0.2', '0.0']
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Iterate over Compatibility Matrix
         if: |
           (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.3')
