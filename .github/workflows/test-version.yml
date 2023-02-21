@@ -14,5 +14,4 @@ jobs:
     steps:
     - name: Test version
       run: |
-        echo "Testing version ${a-version} - ${b-version}..."
-        # Add your commands to test the version here
+        echo "Testing version ${{ github.event.inputs.a-version }} - ${{ github.event.inputs.b-version }}..."
