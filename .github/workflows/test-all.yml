@@ -1,24 +1,17 @@
 name: Test all versions 
 
 on:
-  workflow_dispatch:
-    inputs:
-      ocp_versions:
-        description: 'A list of versions to iterate over'
-        required: false
-        default: '["4.12", "4.11", "4.10"]'
-      opct_versions:
-        description: 'A map of versions to iterate over'
-        required: false
-        default: '{"4.12": ["0.3", "0.2"], "4.11": ["0.2"], "4.10": ["0.0"]}'
+  workflow_dispatch: {}
 
 jobs:
   iterate_and_call:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ocp-version: ['4.12', '4.11', '4.10']
+        opct-version: ['0.3', '0.2', '0.0']
     steps:
       - name: Iterate over Compatibility Matrix
         run: |
-          for ocp_version in ${{ fromJson(inputs.ocp_versions) }}; do
-            echo "Building ocp_version $opct_version"
-            
-          done
+          echo "ocp-version: ${{ matrix.ocp-version }}, opct-version: ${{ matrix.opct-version }}"
+
