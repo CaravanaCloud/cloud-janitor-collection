@@ -12,9 +12,6 @@ jobs:
   test_version:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
     - name: Test version
       run: |
         echo "Testing version ${ocp-version}-${opct-version}..."
