@@ -16,7 +16,7 @@ jobs:
           (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.3')
           || (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.2')
           || (matrix.ocp-version == '4.11') && (matrix.opct-version == '0.2')
-        uses: ./.github/workflows/test-version.yml
+        uses: CaravanaCloud/cloud-janitor-collection/.github/workflows/test-version.yml@main
         with:
           ocp-version: ${{ matrix.ocp-version }}
           opct-version: ${{ matrix.opct-version }}
