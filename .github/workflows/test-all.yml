@@ -5,18 +5,19 @@ on:
 
 jobs:
   iterate_and_call:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         ocp-version: ['4.12', '4.11', '4.10']
         opct-version: ['0.3', '0.2', '0.0']
-    name: Iterate over Compatibility Matrix
-    if: |
+    steps:
+      - name: Iterate over Compatibility Matrix
+        if: |
           (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.3')
           || (matrix.ocp-version == '4.12') && (matrix.opct-version == '0.2')
           || (matrix.ocp-version == '4.11') && (matrix.opct-version == '0.2')
-    uses: CaravanaCloud/cloud-janitor-collection/.github/workflows/test-version.yml@main
-    with:
+        uses: ./.github/workflows/test-version.yml
+        with:
           ocp-version: ${{ matrix.ocp-version }}
           opct-version: ${{ matrix.opct-version }}
-
 
