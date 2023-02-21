@@ -16,7 +16,6 @@ jobs:
           (matrix.a-version == '1.0') && (matrix.b-version == 'A.B')
           || (matrix.a-version == '1.0') && (matrix.b-version == 'C.D')
           || (matrix.a-version == '2.0') 
-          # ...
         run: |
           echo "Testing with a: ${a-version} b: ${b-version}..."
           curl -X POST \
