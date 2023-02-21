@@ -17,11 +17,11 @@ jobs:
           || (matrix.a-version == '1.0') && (matrix.b-version == 'C.D')
           || (matrix.a-version == '2.0') 
         run: |
-          echo "Testing with a: ${a-version} b: ${b-version}..."
+          echo "Testing with a: ${{ matrix.a-version }} b: ${{ matrix.b-version }}"
           curl -X POST \
               -H 'Accept: application/vnd.github.v3+json' \
               -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
               https://api.github.com/repos/CaravanaCloud/cloud-janitor-collection/actions/workflows/test-version.yml/dispatches \
-              -d '{"ref":"main", "inputs": {"a-version": "${a-version}", "b-version": "b-version"}}'
-          echo "Sent dispatch to version ${a-version}-${b-version}..."
+              -d '{"ref":"main", "inputs": {"a-version": "${{ matrix.a-version }}", "${{ matrix.b-version }}": "${b-version}"}}'
+          echo "Sent dispatch to version ${{ matrix.a-version }} - ${{ matrix.b-version }}"
 
