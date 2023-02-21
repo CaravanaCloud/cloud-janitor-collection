@@ -1,4 +1,4 @@
-name: Test Version
+name: Test single version
 
 on:
   workflow_call:
