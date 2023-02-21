@@ -1,0 +1,30 @@
+name: Test all versions
+
+on:
+  workflow_dispatch:
+    inputs:
+      ocp-versions:
+        description: 'A comma-separated list of versions to iterate over'
+        required: false
+        default: '4.11,4.10'
+
+jobs:
+  iterate_and_call:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Iterate over OpenShift Container Platform versions
+        run: |
+      - name: Iterate over OpenShift Container Platform versions
+        run: |
+          IFS=',' read -ra ocp_versions <<< "${{ github.event.inputs.ocp-versions }}"
+          for ocp_version in "${ocp_versions[@]}"
+          do
+            echo "Testing $ocp_version"
+            curl \
+              -X POST \
+              -H 'Content-Type: application/json' \
+              -H 'Accept: application/vnd.github.v3+json' \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              https://api.github.com/repos/user/repo/actions/workflows/test-version.yml/dispatches \
+              -d "{\"ref\":\"main\", \"inputs\": {\"ocp-version-input\": \"$ocp_version\"}}"
+          done
