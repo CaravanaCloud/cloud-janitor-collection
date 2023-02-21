@@ -6,7 +6,7 @@ on:
       ocp-versions:
         description: 'A comma-separated list of versions to iterate over'
         required: false
-        default: '4.11,4.10'
+        default: '4.12,4.11'
 
 jobs:
   iterate_and_call:
