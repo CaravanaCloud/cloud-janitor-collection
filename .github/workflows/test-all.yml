@@ -4,27 +4,23 @@ on:
   workflow_dispatch:
     inputs:
       ocp-versions:
-        description: 'A comma-separated list of versions to iterate over'
+        description: 'A list of versions to iterate over'
         required: false
-        default: '4.12,4.11'
+        default: '["4.12", "4.11", "4.10"]'
+      opct-versions:
+        description: 'A map of versions to iterate over'
+        required: false
+        default: '{"4.12": ["0.3", "0.2"], "4.11": ["0.2"], "4.10": ["0.0"]}'
 
 jobs:
   iterate_and_call:
     runs-on: ubuntu-latest
     steps:
-      - name: Iterate over OpenShift Container Platform versions
+      - name: Iterate over Compatibility Matrix
         run: |
-      - name: Iterate over OpenShift Container Platform versions
-        run: |
-          IFS=',' read -ra ocp_versions <<< "${{ github.event.inputs.ocp-versions }}"
-          for ocp_version in "${ocp_versions[@]}"
-          do
-            echo "Testing $ocp_version"
-            curl \
-              -X POST \
-              -H 'Content-Type: application/json' \
-              -H 'Accept: application/vnd.github.v3+json' \
-              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              https://api.github.com/repos/CaravanaCloud/cloud-janitor-collection/actions/workflows/test-version.yml/dispatches \
-              -d "{\"ref\":\"main\", \"inputs\": {\"ocp-version\": \"$ocp_version\"}}"
+          for ocp-version in ${{ fromJson(inputs.ocp-versions) }}; do
+            for opct-version in ${{ fromJson(inputs.opct-versions)[ocp-version] }}; do
+              echo "Building ocp-version $ocp-version, opct-version $opct-version"
+              # call another GitHub action with version and build as inputs
+            done
           done
