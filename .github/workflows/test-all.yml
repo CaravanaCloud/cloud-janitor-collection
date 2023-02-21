@@ -25,6 +25,6 @@ jobs:
               -H 'Content-Type: application/json' \
               -H 'Accept: application/vnd.github.v3+json' \
               -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              https://api.github.com/repos/user/repo/actions/workflows/test-version.yml/dispatches \
+              https://api.github.com/repos/CaravanaCloud/cloud-janitor-collection/actions/workflows/test-version.yml/dispatches \
               -d "{\"ref\":\"main\", \"inputs\": {\"ocp-version\": \"$ocp_version\"}}"
           done
