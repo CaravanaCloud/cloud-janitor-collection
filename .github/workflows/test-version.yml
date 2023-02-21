@@ -1,0 +1,15 @@
+name: Test one version
+
+on:
+  workflow_dispatch:
+    inputs:
+      ocp-version:
+        description: 'The OpenShift Container Platform version to use'
+        required: true
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print message
+        run: echo "Testing OCP ${{ github.event.inputs.ocp-version-input }}."
