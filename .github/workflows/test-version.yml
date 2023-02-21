@@ -1,21 +1,21 @@
-name: Test one version
+name: Test Version
 
 on:
   workflow_call:
     inputs:
       ocp-version:
         type: string
-      ocpt-version:
+      opct-version:
         type: string
 
 jobs:
-  example_job:
+  test-version:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Run heavy build
-        run: |
-          echo "Run ocp-version ${{ inputs.ocpversion }}, opct-version ${{ inputs.opct-version }}"
-          sleep 3
+    - name: Checkout code
+      uses: actions/checkout@v2
 
+    - name: Test version
+      run: |
+        echo "Testing version ${ocp-version}-${opct-version}..."
+        # Add your commands to test the version here
