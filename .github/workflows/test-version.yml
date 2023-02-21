@@ -1,12 +1,12 @@
 name: Test single version
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       ocp-version:
-        type: string
+        description: ocp version
       opct-version:
-        type: string
+        description: opct version
 
 jobs:
   test_version:
